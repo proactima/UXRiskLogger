@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>UXRiskLogger</id>
+    <version>1.0</version>
+    <authors>Ninject Project Contributors, Anders Østhus</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+	<licenseUrl>https://raw.github.com/proactima/UXRiskLogger/master/LICENSE</licenseUrl>
+    <description>Logging extension for Ninject, modified with AutoNinject, and customized to our logging needs</description>
+    <language>en-US</language>
+	<tags>Ninject ioc di logging</tags>
+	<projectUrl>https://github.com/proactima/UXRiskLogger</projectUrl>
+    <dependencies>
+      <dependency id="Ninject" version="" />
+    </dependencies> 
+  </metadata>
+</package>
