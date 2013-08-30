@@ -177,9 +177,12 @@ namespace Ninject.Extensions.UXRiskLogger.Log4Net.Infrastructure
 
         public override void Debug(string message, string correlationId, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Debug;
             logData.Properties["correlationId"] = correlationId;
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
 
@@ -187,97 +190,124 @@ namespace Ninject.Extensions.UXRiskLogger.Log4Net.Infrastructure
 
         public override void Debug(string message, double value, UnitType unitType, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Debug;
             logData.Properties["value"] = value;
             logData.Properties["unitType"] = unitType.ToString();
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Debug(string message, double value, UnitType unitType, string correlationId, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Debug;
             logData.Properties["correlationId"] = correlationId;
             logData.Properties["value"] = value;
             logData.Properties["unitType"] = unitType.ToString();
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Info(string message, string correlationId, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Info;
             logData.Properties["correlationId"] = correlationId;
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Info(string message, double value, UnitType unitType, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Info;
             logData.Properties["value"] = value;
             logData.Properties["unitType"] = unitType.ToString();
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Info(string message, double value, UnitType unitType, string correlationId, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Info;
             logData.Properties["correlationId"] = correlationId;
             logData.Properties["value"] = value;
             logData.Properties["unitType"] = unitType.ToString();
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Warn(string message, string correlationId, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Warn;
             logData.Properties["correlationId"] = correlationId;
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Warn(string message, double value, UnitType unitType, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Warn;
             logData.Properties["value"] = value;
             logData.Properties["unitType"] = unitType.ToString();
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Warn(string message, double value, UnitType unitType, string correlationId, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Warn;
             logData.Properties["correlationId"] = correlationId;
             logData.Properties["value"] = value;
             logData.Properties["unitType"] = unitType.ToString();
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Error(string message, string correlationId, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Error;
             logData.Properties["correlationId"] = correlationId;
+
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
 
             SetEvent(logData);
         }
 
         public override void Error(string message, double value, UnitType unitType, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Error;
             logData.Properties["value"] = value;
             logData.Properties["unitType"] = unitType.ToString();
@@ -287,16 +317,19 @@ namespace Ninject.Extensions.UXRiskLogger.Log4Net.Infrastructure
 
         public override void Error(string message, double value, UnitType unitType, string correlationId, Exception exception = null)
         {
-            var logData = CreateLogData(message, exception);
+            var logData = CreateLogData(message);
             logData.Level = Level.Error;
             logData.Properties["correlationId"] = correlationId;
             logData.Properties["value"] = value;
             logData.Properties["unitType"] = unitType.ToString();
 
+            if (exception != null)
+                logData.Properties["exceptionMessage"] = exception.Message;
+
             SetEvent(logData);
         }
 
-        private static LoggingEventData CreateLogData(string message, Exception exception)
+        private static LoggingEventData CreateLogData(string message)
         {
             StackFrame frame = new StackFrame(2);
             var method = frame.GetMethod();
@@ -311,14 +344,12 @@ namespace Ninject.Extensions.UXRiskLogger.Log4Net.Infrastructure
             logData.Properties["correlationId"] = null;
             logData.Properties["value"] = null;
             logData.Properties["unitType"] = null;
-
-            if (exception != null)
-                logData.ExceptionString = exception.Message;
+            logData.Properties["exceptionMessage"] = null;
 
             return logData;
         }
 
-        private void SetEvent(LoggingEventData logData)
+        private void SetEvent(LoggingEventData logData, Exception exception = null)
         {
             var logEvent = new LoggingEvent(logData);
 
