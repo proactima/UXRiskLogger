@@ -4,7 +4,7 @@ UXRiskLogger
 Description
 -----------
 This is a modified version of ninject/ninject.extensions.logging, based on
-* Project@SHA: ninject/ninject.extensions.logging@3384bcfe640920f5ad14b4446e689376b95052f4
+* User/Project@SHA: ninject/ninject.extensions.logging@3384bcfe640920f5ad14b4446e689376b95052f4
 
 Basically, it's ninject.extensions.logging, ninject.extensions.logging/log4net and NinjectAutoLogging (http://rationalgeek.com/blog/introducing-ninjectautologging/).
 We've modified the Logger object to add some extra logger methods, and use the newly created object to store everything to an Azure table.
