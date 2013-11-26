@@ -1,11 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXRiskLogger", "UXRiskLogger\UXRiskLogger.csproj", "{6C48D2ED-6DB3-4BC1-8A25-264DBE8401D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLoggingDemo", "ConsoleLoggingDemo\ConsoleLoggingDemo.csproj", "{D2F8D69C-19BD-4CED-BD55-1A12B929E5E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcAzureLoggingDemo", "MvcAzureLoggingDemo\MvcAzureLoggingDemo.csproj", "{5DA50AB8-DC4A-4FA1-9096-97930B4126A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2C6780D7-5A6E-4EB9-9356-6BE44F53E665}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
